@@ -35,7 +35,7 @@
 
 //from ramps 1.4 stepper driver
 #define STEP_PIN              3  //PD3;
-#define DIR_PIN               14 //PC0;
+#define DIR_PIN               6//14 //PC0;
 //#define ENABLE_PIN            13 //PB5; for now is USELESS
 
 //to use current motor as speed control, the LMD18245 has 4 bit cuttent output
@@ -44,17 +44,16 @@
 //#define  M2 11
 //#define  M3 12
 
-
 volatile long encoder0Pos = 0;
 
-long target = 0;
-long target1 = 10000;
+long target = 0;      //stating position
+long target1 = 0;//3125*10; //just go to this position
 int amp=212;
 //correction = Kp * error + Kd * (error - prevError) + kI * (sum of errors)
 //PID controller constants
-float KP = 6.0 ; //position multiplier (gain) 2.25
-float KI = 0.1; // Intergral multiplier (gain) .25
-float KD = 1.3; // derivative multiplier (gain) 1.0
+float KP = 3.0 ; //position multiplier (gain) 2.25
+float KI = 0.25; // Intergral multiplier (gain) .25
+float KD = 1.0; // derivative multiplier (gain) 1.0
 
 int lastError = 0;
 int sumError = 0;
